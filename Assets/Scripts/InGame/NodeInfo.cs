@@ -26,16 +26,17 @@ public class NodeInfo : MonoBehaviour
     private void SetUpSprite(int _type)
     {
         nType = _type;
-        if (nType >= 4)
-        {
-            nType -= 4;
-            renderer.color = Color.black;
-        }
-        else
-        {
-            renderer.color = Color.white;
-        }
-        renderer.sprite = Spirteimage[nType];
+        //if (nType >= 4)
+        //{
+        //    nType -= 4;
+        //    renderer.color = Color.black;
+        //}
+        //else
+        //{
+        //    renderer.color = Color.white;
+        //}
+        int rand = Random.Range(0, 4);
+        renderer.sprite = Spirteimage[rand];
         
     }
     public void DisableObject(float _time = 0.0f)

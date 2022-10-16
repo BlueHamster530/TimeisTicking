@@ -10,10 +10,8 @@ public class PlayerNodechecker : MonoBehaviour
     PlayerInfomation Playerinfo;
     [SerializeField]
     GameObject ScoreEffect;
-    public void PressNodeCheckrt(int _Type,bool IsBarColorBlack)
+    public void PressNodeCheckrt(int _Type)
     {
-        if (IsBarColorBlack == true)
-            _Type = _Type + 4;
 
         if (nodes.Count > 0)
         {
@@ -27,7 +25,6 @@ public class PlayerNodechecker : MonoBehaviour
         if (collision.CompareTag("Node"))
         {
             nodes.Enqueue(collision.gameObject.transform.GetComponent<NodeInfo>());
-            collision.transform.GetComponent<SpriteRenderer>().color = Color.black;
         }
     }
     private void DeQueuueNode(NodeScore _Score = NodeScore.Null,float _disabletime = 0.0f)
@@ -52,7 +49,6 @@ public class PlayerNodechecker : MonoBehaviour
         }
         print(this.transform.name + _Score);
         cGameManager.instance.AddScore((int)_Score);
-        clone.GetComponent<SpriteRenderer>().color = Color.blue;
         ScoreEffect Effectclone = Instantiate(ScoreEffect, clone.transform.position, Quaternion.identity).GetComponent<ScoreEffect>();
         int scoretype = 0;
         switch (_Score)

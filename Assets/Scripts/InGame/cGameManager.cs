@@ -22,9 +22,9 @@ public class cGameManager : MonoBehaviour
     public float fDelayTimeBeforeStart;
 
     [SerializeField]
-    public KeyCode SmallKey = KeyCode.S;
+     KeyCode SmallKey = KeyCode.S;
     [SerializeField]
-    public KeyCode LargeKey = KeyCode.K;
+    KeyCode LargeKey = KeyCode.K;
 
 
     public float fCurrnetPlayTime { get; set; }
@@ -44,6 +44,14 @@ public class cGameManager : MonoBehaviour
             musicinfo = GameObject.Find("MusicInfo").GetComponent<MusicInfo>();
 
         fMusicPlayDelayTime = 0;
+    }
+    public KeyCode GetSmallKey()
+    {
+        return SmallKey;
+    }
+    public KeyCode GetLargeKey()
+    {
+        return LargeKey;
     }
     private void FixedUpdate()
     {

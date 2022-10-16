@@ -21,12 +21,12 @@ public class NodeSpawner : MonoBehaviour
         if(NodeList.nodeList.Count <=0 || NodeList.nodeList.Count <= nCurrentIndex) return;
         if (cGameManager.instance.fCurrnetPlayTime >= NodeList.nodeList[nCurrentIndex].fSpawnTime)
         {
-            EnableNode(NodeList.nodeList[nCurrentIndex].nType, NodeList.nodeList[nCurrentIndex].xPos, NodeList.nodeList[nCurrentIndex].yPos);
+            EnableNode(NodeList.nodeList[nCurrentIndex].nType, NodeList.nodeList[nCurrentIndex].xPos, NodeList.nodeList[nCurrentIndex].yPos, NodeList.nodeList[nCurrentIndex].zRotate);
             nCurrentIndex++;
          // NodeList.nodeList.RemoveAt(0);
         }
     }
-    private void EnableNode(int _Type, float _x, float _y)
+    private void EnableNode(int _Type, float _x, float _y, float _zRotate)
     {
         bool bIsCheck = true;
         for (int i = 0; i < NodePrefabs.Length; i++)
@@ -35,6 +35,7 @@ public class NodeSpawner : MonoBehaviour
             {
                 NodePrefabs[i].Init(_Type);
                 NodePrefabs[i].transform.position = new Vector3(_x, _y, 0);
+                NodePrefabs[i].transform.eulerAngles = new Vector3(0, 0, _zRotate);
                 NodePrefabs[i].gameObject.SetActive(true);
                 bIsCheck = false;
                 break;

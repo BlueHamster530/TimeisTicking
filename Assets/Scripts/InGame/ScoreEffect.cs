@@ -24,30 +24,31 @@ public class ScoreEffect : MonoBehaviour
         fCurrentDisaperTime = 0.0f;
         vDisapearVector = transform.position + (transform.position * 0.2f);
 
-        switch (_ScoreType)
-        {
-            case 0:
-                {
-                    renderer.color = Color.white;
-                }
-                break;
-            case 1:
-                {
-                    renderer.color = Color.green;
-                }
-                break;
-            case 2:
-                {
-                    renderer.color = Color.blue;
-                }
-                break;
-            case 3:
-                {
-                    renderer.color = Color.black;
-                }
-                break;
-        }
+    //    switch (_ScoreType)
+    //    {
+    //        case 0:
+    //            {
+    //                renderer.color = Color.white;
+    //            }
+    //            break;
+    //        case 1:
+    //            {
+    //                renderer.color = Color.green;
+    //            }
+    //            break;
+    //        case 2:
+    //            {
+    //                renderer.color = Color.blue;
+    //            }
+    //            break;
+    //        case 3:
+    //            {
+    //                renderer.color = Color.black;
+    //            }
+    //            break;
+    //    }
     }
+
     // Update is called once per frame
     void Update()
     {

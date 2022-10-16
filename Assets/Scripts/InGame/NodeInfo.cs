@@ -5,12 +5,18 @@ using UnityEngine;
 public class NodeInfo : MonoBehaviour
 {
     [SerializeField]
-    Sprite[] Spirteimage;//상하좌우순서 흰 검 순서
+    Sprite[] InSideSpirteimage;//상하좌우순서 흰 검 순서
+    [SerializeField]
+    Sprite[] OutSideSpirteimage;//상하좌우순서 흰 검 순서
+    [SerializeField]
+    Sprite[] LightSpirteimage;//상하좌우순서 흰 검 순서
     SpriteRenderer renderer;
 
     [SerializeField]
     int nType;
 
+    [SerializeField]
+    GameObject LightObject;
     // Start is called before the first frame update
     //private void Start()
     //{
@@ -26,18 +32,15 @@ public class NodeInfo : MonoBehaviour
     private void SetUpSprite(int _type)
     {
         nType = _type;
-        //if (nType >= 4)
-        //{
-        //    nType -= 4;
-        //    renderer.color = Color.black;
-        //}
-        //else
-        //{
-        //    renderer.color = Color.white;
-        //}
         int rand = Random.Range(0, 4);
-        renderer.sprite = Spirteimage[rand];
-        
+        if(nType ==0)//0이면 안쪽원
+            renderer.sprite = InSideSpirteimage[rand];
+        else
+            renderer.sprite = OutSideSpirteimage[rand];
+
+        rand = Random.Range(0, 200);
+        rand = rand % 4; 
+        LightObject.GetComponent<SpriteRenderer>().sprite = LightSpirteimage[rand];
     }
     public void DisableObject(float _time = 0.0f)
     {

@@ -6,17 +6,19 @@ using System.IO;
 [System.Serializable]
 public struct MusicNodeInfo
 {
-    public MusicNodeInfo(float _time, int _type, float _xpos, float _ypos)
+    public MusicNodeInfo(float _time, int _type, float _xpos, float _ypos,float _zRotate)
     {
         fSpawnTime = _time;
         nType = _type;
         xPos = _xpos;
         yPos = _ypos;
+        zRotate = _zRotate;
     }
     public float fSpawnTime;
     public int nType;
     public float xPos;
     public float yPos;
+    public float zRotate;
 }
 [System.Serializable]
 public class MusicNodeInfoList

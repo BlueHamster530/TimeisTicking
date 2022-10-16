@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3834fb9a77694594b847d333ba4b0adb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 257880dd94ec6ae45a6fac6e3bb9fe6b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,8 +98,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreimage:
-  - {fileID: 21300000, guid: 3e4e6d3e2ebdf754e8d34ac3333e49d8, type: 3}
-  - {fileID: 21300000, guid: fc2f46ac1cad7b94396297e958f14bdd, type: 3}
-  - {fileID: 21300000, guid: 9975b64ce3b152146b494134fd5b6afe, type: 3}
-  - {fileID: 21300000, guid: 3834fb9a77694594b847d333ba4b0adb, type: 3}
+  - {fileID: 21300000, guid: c5db99aa3baec324c9fdaeeca76e81d1, type: 3}
+  - {fileID: 21300000, guid: 656f844fad8c6184f8633e55e709a912, type: 3}
+  - {fileID: 21300000, guid: 257880dd94ec6ae45a6fac6e3bb9fe6b, type: 3}
+  - {fileID: 21300000, guid: 3213e690edb94c446977a34cf5f6a05d, type: 3}
   fDisapearTime: 1

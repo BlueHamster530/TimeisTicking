@@ -12,6 +12,14 @@ public class MusicInfo : MonoBehaviour
     void Start()
     {
         audio = GetComponent <AudioSource> ();
+        //audio.clip = clip;
+        MusicSetup(GameInfomationManager.instance.GetSelectedMuslicClip());
+        NodeBuliderMusicInfoMaker.instance.SetUpMusic(GameInfomationManager.instance.GetMusicName());
+    }
+
+    public void MusicSetup(AudioClip _clip)
+    {
+        clip = _clip;
         audio.clip = clip;
     }
 

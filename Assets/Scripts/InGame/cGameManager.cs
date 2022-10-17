@@ -35,8 +35,8 @@ public class cGameManager : MonoBehaviour
     void Awake()
     {
         instance = this;
-        bIsStart = false;
-        bIsMoveLine = false;
+        bIsStart = true;
+        bIsMoveLine = true;
         nScore = 0;
         fCurrnetPlayTime = 0;
         bIsMusicAlreayStart = false;

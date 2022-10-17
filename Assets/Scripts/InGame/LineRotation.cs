@@ -13,13 +13,13 @@ public class LineRotation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        float originrotationz = ((360.0f / fSpeed) * cGameManager.instance.fDelayTimeBeforeStart);
-        print(originrotationz);
+        float originrotationz = 0;
+            originrotationz = ((360.0f / fSpeed) * cGameManager.instance.fDelayTimeBeforeStart);
         transform.Rotate(new Vector3(0, 0, -originrotationz));
     }
     private void Rotation()
     {
-        if (cGameManager.instance.bIsMoveLine == false) return;
+          if (cGameManager.instance.bIsMoveLine == false) return;
 
         this.transform.Rotate(new Vector3(0, 0, 360.0f/fSpeed) * Time.deltaTime);
         fSpeedbytick = 360.0f / fSpeed;

@@ -28,15 +28,26 @@ public class MusicNodeInfoList
 public class NodeBuliderMusicInfoMaker : MonoBehaviour
 {
     public static NodeBuliderMusicInfoMaker instance;
-   public MusicNodeInfoList NodeList;
+    public MusicNodeInfoList NodeList;
     string path;
     private void Awake()
     {
-        instance = this; 
-        path = Path.Combine(Application.streamingAssetsPath, "MusicNodeList.Json");
+        instance = this;
+        if (GameObject.Find("Player").GetComponent<PlayerInfomation>().bIsNodeBuilder == true)
+        {
+            path = Path.Combine(Application.streamingAssetsPath, "MusicNodeList.Json");
+            LoadNodeList();
+        }
+        else
+        {
+
+        }
+    }
+    public void SetUpMusic(string jsonName)
+    {
+        path = Path.Combine(Application.streamingAssetsPath, jsonName+".Json");
         LoadNodeList();
     }
-
     public void LoadNodeList()
     {
         if (File.Exists(path))

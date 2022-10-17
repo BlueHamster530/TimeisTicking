@@ -1955,8 +1955,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db1361d42d35bdc4f90668aafdb1325a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MusicClip: {fileID: 0}
-  MusicName: 
+  MusicClip: {fileID: 8300000, guid: 9639de8c07c915340964572ae9498b98, type: 3}
+  MusicName: MusicNodeList
 --- !u!1 &1396535779
 GameObject:
   m_ObjectHideFlags: 0

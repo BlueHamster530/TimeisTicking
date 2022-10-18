@@ -40,7 +40,6 @@ public class NodeBuliderMusicInfoMaker : MonoBehaviour
         }
         else
         {
-
         }
     }
     public void SetUpMusic(string jsonName)

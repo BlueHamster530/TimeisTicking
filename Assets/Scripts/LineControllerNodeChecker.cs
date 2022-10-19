@@ -21,9 +21,15 @@ public class LineControllerNodeChecker : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("SelectNode"))
-        {
+        { 
             nodeinfo = collision.gameObject.GetComponent<SelectNode>();
         }
     }
-
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.name == nodeinfo.name)
+        {
+            nodeinfo = null;
+        }
+    }
 }

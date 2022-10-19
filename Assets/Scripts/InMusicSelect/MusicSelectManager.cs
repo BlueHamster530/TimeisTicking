@@ -11,18 +11,26 @@ public class MusicSelectManager : MonoBehaviour
     [SerializeField]
     LineController line;
     // Start is called before the first frame update
+
+    AudioSource pannelaudioSource;
     void Start()
     {
         instance = this;
         MusicInfoPannel.SetActive(false);
+        pannelaudioSource = MusicInfoPannel.GetComponent<AudioSource>();
     }
-    public void ShowMusicInfoPannel()
+    public void ShowMusicInfoPannel(AudioClip musicclip)
     {
         MusicInfoPannel.SetActive(true);
+        pannelaudioSource.clip = musicclip;
+        pannelaudioSource.Stop();
         line.bIsNodeSelect = false;
+        pannelaudioSource.Play();
+
     }
     public void CloseMusicInfoPannel()
     {
+        pannelaudioSource.Stop();
         MusicInfoPannel.SetActive(false);
         line.bIsNodeSelect = true;
     }

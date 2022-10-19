@@ -13,7 +13,7 @@ public class NodeMusicInfo : MonoBehaviour
     {
         GameInfomationManager.instance.SetSeletedMusicClip(MusicClip);
         GameInfomationManager.instance.SetMusicName(MusicName);
-        MusicSelectManager.instance.ShowMusicInfoPannel();
+        MusicSelectManager.instance.ShowMusicInfoPannel(MusicClip);
     }
 
 }

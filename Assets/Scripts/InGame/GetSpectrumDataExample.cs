@@ -13,11 +13,21 @@ public class GetSpectrumDataExample : MonoBehaviour
 
 
     ParticleSystem.MainModule psMain;
+
+    [SerializeField]
+    float VolumSize = 1.0f;
+    [SerializeField]
+    float asdaw = 1.0f;
+    [SerializeField]
+    CameraController CameraController;
+    float [] CheckingSoundVolume = new float[2];
     void Start()
     {
         audio = GetComponent<AudioSource>();
         psMain = Particle.main;
         Particle.time = 150.0f;
+        CheckingSoundVolume[0] = -1.0f;
+        CheckingSoundVolume[1] = 0.0f;
     }
 
     void Update()
@@ -34,5 +44,22 @@ public class GetSpectrumDataExample : MonoBehaviour
         //}
         test = spectrum[0];
         psMain.simulationSpeed = 3.0f + (test * 15.0f);
+        if (CheckingSoundVolume[0] <= -1.0f)
+        {
+            CheckingSoundVolume[0] = test;
+        }
+        else
+        {
+            CheckingSoundVolume[1] = test;
+            float _distance = CheckingSoundVolume[1] - CheckingSoundVolume[0];
+            if (_distance >= VolumSize)
+            {
+
+                CameraController.CloseUpForTime(5.0f, 5.3f, 0.1f, 1.0f);
+            }
+
+            CheckingSoundVolume[0] = CheckingSoundVolume[1];
+        }
+        asdaw = psMain.simulationSpeed;
     }
 }

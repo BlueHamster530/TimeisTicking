@@ -8,13 +8,22 @@ public class MusicInfo : MonoBehaviour
 
     [SerializeField]
     AudioClip clip;
+    [SerializeField]
+    PlayerInfomation player;
     // Start is called before the first frame update
     void Start()
     {
         audio = GetComponent <AudioSource> ();
-        //audio.clip = clip;
-        MusicSetup(GameInfomationManager.instance.GetSelectedMuslicClip());
-        NodeBuliderMusicInfoMaker.instance.SetUpMusic(GameInfomationManager.instance.GetMusicName());
+        if (player.bIsNodeBuilder == false)
+        {
+            //audio.clip = clip;
+            MusicSetup(GameInfomationManager.instance.GetSelectedMuslicClip());
+            NodeBuliderMusicInfoMaker.instance.SetUpMusic(GameInfomationManager.instance.GetMusicName());
+        }
+        else
+        {
+            MusicSetup(clip);
+        }
     }
 
     public void MusicSetup(AudioClip _clip)

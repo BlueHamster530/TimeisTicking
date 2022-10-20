@@ -9,10 +9,17 @@ public class NodeSpawner : MonoBehaviour
 
     [SerializeField]
     NodeInfo[] NodePrefabs;
+
+    LookAtTarget[] NodePrefabsLookAt;
     // Start is called before the first frame update
     void Start()
     {
         nCurrentIndex = 0;
+        NodePrefabsLookAt = new LookAtTarget[NodePrefabs.Length];
+        for (int i = 0; i < NodePrefabs.Length; i++)
+        {
+            NodePrefabsLookAt[i] = NodePrefabs[i].GetComponent<LookAtTarget>();
+        }
     }
     private void nodeSpawn()
     {
@@ -26,6 +33,11 @@ public class NodeSpawner : MonoBehaviour
          // NodeList.nodeList.RemoveAt(0);
         }
     }
+    public void LookAt2D(Vector3 pos, Vector3 dir)
+    {
+        transform.position = pos;
+        transform.rotation = Quaternion.AngleAxis(Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg, Vector3.forward);
+    }
     private void EnableNode(int _Type, float _x, float _y, float _zRotate)
     {
         bool bIsCheck = true;
@@ -35,7 +47,7 @@ public class NodeSpawner : MonoBehaviour
             {
                 NodePrefabs[i].Init(_Type);
                 NodePrefabs[i].transform.position = new Vector3(_x, _y, 0);
-                NodePrefabs[i].transform.eulerAngles = new Vector3(0, 0, _zRotate);
+                NodePrefabsLookAt[i].SetupAngle();
                 NodePrefabs[i].gameObject.SetActive(true);
                 bIsCheck = false;
                 break;

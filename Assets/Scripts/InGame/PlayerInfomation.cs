@@ -22,6 +22,8 @@ public class PlayerInfomation : MonoBehaviour
         renderer = GetComponent<SpriteRenderer>();
         if (bIsNodeBuilder == false)
             NodeBuildObject.SetActive(false);
+        else
+            cGameManager.instance.GameStartOrPuase();
     }
 
     private void KeyEvent()

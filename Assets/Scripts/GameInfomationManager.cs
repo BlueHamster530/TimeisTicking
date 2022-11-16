@@ -11,12 +11,51 @@ public class GameInfomationManager : MonoBehaviour
     AudioClip SelectedMusicClip;
     [SerializeField]
     string MusicName;
+    public AudioSource audioSource;
+    public float BGMCurrentTime = 0;
     // Start is called before the first frame update
     void Awake()
     {
+        if (instance != null)
+        {
+            Destroy(instance.gameObject);
+        }
         instance = this;
+        audioSource = GetComponent<AudioSource>();
+        BGMCurrentTime = 0;
         DontDestroyOnLoad(this.gameObject);
     }
+    public void SenceLoad(string SceneName)
+    {
+        BGMCurrentTime = audioSource.time;
+        SceneManager.LoadScene(SceneName);
+    }
+    private void Start()
+    {
+        if (SceneManager.GetActiveScene().name == "InGame")
+        {
+            audioSource.Stop();
+            BGMCurrentTime = 0;
+        }
+        else
+        {
+            if (audioSource.clip.length >= BGMCurrentTime)
+            {
+                BGMCurrentTime = 0;
+            }
+            audioSource.time = BGMCurrentTime;
+            audioSource.Play();
+        }
+    }
+    public void BGMPause()
+    {
+        audioSource.Pause();
+    }
+    public void BGMPlay()
+    {
+        audioSource.Play();
+    }
+
 
     public void SetSeletedMusicClip(AudioClip clip)
     {

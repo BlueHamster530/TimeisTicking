@@ -7,7 +7,7 @@ public class MusicInfo : MonoBehaviour
     AudioSource audio;
 
     [SerializeField]
-    AudioClip clip;
+    public AudioClip clip;
     [SerializeField]
     PlayerInfomation player;
     // Start is called before the first frame update
@@ -17,8 +17,16 @@ public class MusicInfo : MonoBehaviour
         if (player.bIsNodeBuilder == false)
         {
             //audio.clip = clip;
-            MusicSetup(GameInfomationManager.instance.GetSelectedMuslicClip());
-            NodeBuliderMusicInfoMaker.instance.SetUpMusic(GameInfomationManager.instance.GetMusicName());
+            if (GameInfomationManager.instance == null)
+            {
+                MusicSetup(clip);
+                NodeBuliderMusicInfoMaker.instance.SetUpMusic("0.Life_is_Journey");
+            }
+            else
+            {
+                MusicSetup(GameInfomationManager.instance.GetSelectedMuslicClip());
+                NodeBuliderMusicInfoMaker.instance.SetUpMusic(GameInfomationManager.instance.GetMusicName());
+            }
         }
         else
         {
@@ -30,6 +38,9 @@ public class MusicInfo : MonoBehaviour
     {
         clip = _clip;
         audio.clip = clip;
+        string musicname = audio.clip.name.Substring(0,1);
+        int musicindex = int.Parse(musicname);
+        PlayerPrefs.SetInt("MusicIndex", musicindex);
     }
 
     public void MusicStartOrPause(bool _Value)

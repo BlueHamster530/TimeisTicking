@@ -18,6 +18,7 @@ public class MusicSelectManager : MonoBehaviour
         instance = this;
         MusicInfoPannel.SetActive(false);
         pannelaudioSource = MusicInfoPannel.GetComponent<AudioSource>();
+        GameInfomationManager.instance.BGMPlay();
     }
     public void ShowMusicInfoPannel(AudioClip musicclip)
     {
@@ -33,6 +34,7 @@ public class MusicSelectManager : MonoBehaviour
         pannelaudioSource.Stop();
         MusicInfoPannel.SetActive(false);
         line.bIsNodeSelect = true;
+        GameInfomationManager.instance.BGMPlay();
     }
 
     private void Update()

@@ -16,6 +16,8 @@ public class NodeSpawner : MonoBehaviour
     {
         nCurrentIndex = 0;
         NodePrefabsLookAt = new LookAtTarget[NodePrefabs.Length];
+        int maxScore = NodePrefabs.Length * (int)NodeScore.Good;
+        PlayerPrefs.SetInt("MaxScore", maxScore);
         for (int i = 0; i < NodePrefabs.Length; i++)
         {
             NodePrefabsLookAt[i] = NodePrefabs[i].GetComponent<LookAtTarget>();
@@ -64,7 +66,6 @@ public class NodeSpawner : MonoBehaviour
         if (NodeList == null)
         {
             NodeList = NodeBuliderMusicInfoMaker.instance.NodeList;
-            print(NodeList.nodeList.Count);
         }
         nodeSpawn();
     }

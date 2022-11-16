@@ -16,16 +16,32 @@ public class PlayerInfomation : MonoBehaviour
 
     [SerializeField]
     GameObject NodeBuildObject;
+    AudioSource audioSource;
+
+    [SerializeField]
+    SpriteRenderer rayderImage;
+
+    float RadyerAlpha;
     // Start is called before the first frame update
     void Start()
     {
         renderer = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
         if (bIsNodeBuilder == false)
             NodeBuildObject.SetActive(false);
         else
             cGameManager.instance.GameStartOrPuase();
+
+        RadyerAlpha = 0.5f;
+        rayderImage.color = new Color(1.0f, 1.0f, 1.0f, RadyerAlpha);
     }
 
+    private void PlayTilePressSound()
+    {
+        RadyerAlpha = 1.0f;
+        audioSource.Stop();
+        audioSource.Play();
+    }
     private void KeyEvent()
     {
         if (cGameManager.instance.bIsMoveLine == false ) return;
@@ -35,18 +51,30 @@ public class PlayerInfomation : MonoBehaviour
         if (Input.GetKeyDown(cGameManager.instance.GetSmallKey()))
         {
             SmallCircleChecker.PressNodeCheckrt(0);
+            PlayTilePressSound();
         }
         if (Input.GetKeyDown(cGameManager.instance.GetLargeKey()))
         {
             LargeCircleChecker.PressNodeCheckrt(1);
+            PlayTilePressSound();
         }
     }
     public void CheckNodeScore(int _PressType)
     {
-        print(_PressType);
+       // print(_PressType);
     }
     void Update()
     {
         KeyEvent();
+
+        if (RadyerAlpha > 0.5f)
+        {
+            RadyerAlpha -= Time.deltaTime * 2.0f;
+        }
+        else
+        {
+            RadyerAlpha = 0.5f;
+        }
+        rayderImage.color = new Color(1.0f, 1.0f, 1.0f, RadyerAlpha);
     }
 }

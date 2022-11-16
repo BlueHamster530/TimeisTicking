@@ -16,34 +16,63 @@ public class LineController : MonoBehaviour
     [SerializeField]
     LineControllerNodeChecker InSide;
     // Start is called before the first frame update
-
    public bool bIsNodeSelect;
 
 
+    AudioSource audioSource;
+
+    [SerializeField]
+    SpriteRenderer rayderImage;
+
+    float RadyerAlpha;
     void Start()
     {
         float originrotationz = 0;
         originrotationz = ((360.0f / fSpeed));
+        bIsNodeSelect = true;
+        audioSource = GetComponent<AudioSource>();
+        RadyerAlpha = 0.5f;
+        rayderImage.color = new Color(1.0f, 1.0f, 1.0f, RadyerAlpha);
     }
     private void Rotation()
     {
         this.transform.Rotate(new Vector3(0, 0, 360.0f / fSpeed) * Time.deltaTime);
         fSpeedbytick = 360.0f / fSpeed;
     }
+    private void PlayTilePressSound()
+    {
+        RadyerAlpha = 1.0f;
+        audioSource.Stop();
+        audioSource.Play();
+    }
     private void KeyInput()
     {
-        if (Input.GetKeyDown(KeyCode.S))
+        if (bIsNodeSelect == true)
         {
-            InSide.NodePressButton();
-        }
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            OutSide.NodePressButton();
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                InSide.NodePressButton();
+                PlayTilePressSound();
+            }
+            if (Input.GetKeyDown(KeyCode.K))
+            {
+                OutSide.NodePressButton();
+                PlayTilePressSound();
+            }
         }
     }
     private void Update()
     {
         KeyInput();
+        if (RadyerAlpha > 0.5f)
+        {
+            RadyerAlpha -= Time.deltaTime*2.0f;
+        }
+        else
+        {
+            RadyerAlpha = 0.5f;
+        }
+        rayderImage.color = new Color(1.0f, 1.0f, 1.0f, RadyerAlpha);
     }
     // Update is called once per frame
     void FixedUpdate()

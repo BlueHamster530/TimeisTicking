@@ -40,7 +40,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6893891734233776795}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -74,12 +74,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 257880dd94ec6ae45a6fac6e3bb9fe6b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5b11c8025ece7e047afcbcae6818dba1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.51, y: 0.51}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -98,8 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreimage:
-  - {fileID: 21300000, guid: c5db99aa3baec324c9fdaeeca76e81d1, type: 3}
-  - {fileID: 21300000, guid: 656f844fad8c6184f8633e55e709a912, type: 3}
-  - {fileID: 21300000, guid: 257880dd94ec6ae45a6fac6e3bb9fe6b, type: 3}
-  - {fileID: 21300000, guid: 3213e690edb94c446977a34cf5f6a05d, type: 3}
-  fDisapearTime: 1
+  - {fileID: 6893891734233776795, guid: 40ad0e318a4708942a37418a5c2e3e78, type: 3}
+  - {fileID: 6893891734233776795, guid: 0a2d0da247b174e4ea99162db5fa0861, type: 3}
+  - {fileID: 6893891734233776795, guid: ae72ca927789a684fbc4116ddf1db2cf, type: 3}
+  - {fileID: 6893891734233776795, guid: 955559eca85e5964c8dd9cfd889d8bb2, type: 3}

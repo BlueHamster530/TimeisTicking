@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
@@ -38,10 +39,14 @@ public class cGameManager : MonoBehaviour
     GameObject GamePauseOnly;
 
     [SerializeField]
-    TextMeshProUGUI continueCountDown;
+    Image continueCountDown;
 
     [SerializeField]
     GameObject GamePauseNotCountDownObject;
+
+
+    [SerializeField]
+    Sprite[] pausecount;
 
     public float fCurrnetPlayTime { get; set; }
     public float fMusicPlayDelayTime { get; set; }
@@ -62,7 +67,7 @@ public class cGameManager : MonoBehaviour
 
         fMusicPlayDelayTime = 0;
         GamePauseOnly.SetActive(false);
-        continueCountDown.text = "3";
+        continueCountDown.sprite = pausecount[2];
         continueCountDown.gameObject.SetActive(false);
         GamePauseNotCountDownObject.SetActive(false);
 
@@ -141,7 +146,8 @@ public class cGameManager : MonoBehaviour
 
         for (int i = 3; i >= 1; i--)
         {
-            continueCountDown.text = i.ToString();
+            //  continueCountDown.text = i.ToString();
+            continueCountDown.sprite = pausecount[i-1];
             yield return new WaitForSeconds(1.0f);
         }
 

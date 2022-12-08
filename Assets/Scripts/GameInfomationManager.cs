@@ -24,6 +24,10 @@ public class GameInfomationManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         BGMCurrentTime = 0;
         DontDestroyOnLoad(this.gameObject);
+        if (!PlayerPrefs.HasKey("SoundVolume"))
+        {
+            PlayerPrefs.SetFloat("SoundVolume", 1.0f);
+        }
     }
     public void SenceLoad(string SceneName)
     {
